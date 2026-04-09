@@ -105,7 +105,8 @@ void convolute(Image* srcImage,Image* destImage,Matrix algorithm, int numThreads
     pthread_t threads[numThreads];
     ThreadData threadData[numThreads];
 
-    for (int i=0; i<numThreads; i++){
+    int i;
+    for (i=0; i<numThreads; i++){
         threadData[i].my_rank = i;
         threadData[i].numThreads = numThreads;
         threadData[i].src = srcImage;
@@ -115,8 +116,9 @@ void convolute(Image* srcImage,Image* destImage,Matrix algorithm, int numThreads
         pthread_create(&threads[i], NULL, threadLoopFunction, &threadData[i]);
     }
 
-    for (int i=0; i<numThreads; i++){
-        pthread_join(threads[i], NULL);
+    int j;
+    for (int j=0; j<numThreads; j++){
+        pthread_join(threads[j], NULL);
     }
 
 /*
