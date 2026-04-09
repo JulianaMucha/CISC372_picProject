@@ -117,7 +117,7 @@ void convolute(Image* srcImage,Image* destImage,Matrix algorithm, int numThreads
     }
 
     int j;
-    for (int j=0; j<numThreads; j++){
+    for (j=0; j<numThreads; j++){
         pthread_join(threads[j], NULL);
     }
 
